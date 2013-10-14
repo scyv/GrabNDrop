@@ -1,0 +1,26 @@
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\bin\x86\Debug\GrabNDrop.exe
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\bin\x86\Debug\GrabNDrop.pdb
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.GrabView.resources
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Main.resources
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.MiniPreview.resources
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Preview.resources
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Properties.Resources.resources
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResGen.read.1.tlog
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResGen.write.1.tlog
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.exe
+F:\dropbox\My Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.pdb
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\bin\x86\Debug\GrabNDrop.exe.config
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.exe
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.pdb
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\bin\x86\Debug\GrabNDrop.exe
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\bin\x86\Debug\GrabNDrop.pdb
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.GrabView.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Main.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.MiniPreview.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.PictureDescriptionDialog.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Preview.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\GrabNDrop.Properties.Resources.resources
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\GrabNSend\obj\x86\Debug\ResGen.write.1.tlog
