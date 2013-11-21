@@ -1,6 +1,6 @@
 !include "MUI2.nsh"
 
-!define APP_VERSION "1_04_03"
+!define APP_VERSION "1_04_04"
 !define APP_NAME "GrabNDrop"
 
 !define GND_BASEPATH "C:\Users\y\Dropbox\Projects\VisualStudio\GrabNDrop\"
