@@ -240,15 +240,6 @@ namespace GrabNDrop
         private void tsbScaleToHundred_Click(object sender, EventArgs e)
         {
 
-            //var dbPath = System.IO.Path.Combine(
-            //        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Dropbox\\host.db");
-
-            //var dbBase64Text = Convert.FromBase64String(System.IO.File.ReadAllText(dbPath));
-
-            //var folderPath = System.Text.ASCIIEncoding.ASCII.GetString(dbBase64Text);
-
-            //System.Diagnostics.Debug.WriteLine(folderPath);
-
             Size imageSize = pbPreview.Image.Size;
 
             int newWidth = imageSize.Width + Width-pbPreview.Width;
@@ -349,6 +340,13 @@ namespace GrabNDrop
             //{
             //    this.Close();
             //}
+        }
+
+        private void bSendMail_Click(object sender, EventArgs e)
+        {
+            MapiMailMessage message = new MapiMailMessage("Grabbed for you", "This image is presented to you by GrabNDrop " + Application.ProductVersion);
+            message.Files.Add(this.filePath);
+            message.ShowDialog();
         }
 
 

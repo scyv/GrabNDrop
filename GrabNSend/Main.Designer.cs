@@ -37,12 +37,13 @@
             this.grabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiAllowBoxCorrection = new System.Windows.Forms.ToolStripMenuItem();
             this.tscbQualty = new System.Windows.Forms.ToolStripComboBox();
             this.tscbType = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tsmiAllowBoxCorrection = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCapturePrintscreen = new System.Windows.Forms.ToolStripMenuItem();
             this.cmTray.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,32 +86,40 @@
             this.infoToolStripMenuItem,
             this.toolStripSeparator2,
             this.tsmiAllowBoxCorrection,
+            this.tsmiCapturePrintscreen,
             this.tscbQualty,
             this.tscbType,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.cmTray.Name = "cmTray";
-            this.cmTray.Size = new System.Drawing.Size(191, 180);
+            this.cmTray.Size = new System.Drawing.Size(218, 202);
             // 
             // grabToolStripMenuItem
             // 
             this.grabToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grabToolStripMenuItem.Name = "grabToolStripMenuItem";
-            this.grabToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.grabToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.grabToolStripMenuItem.Text = "Grab!";
             this.grabToolStripMenuItem.Click += new System.EventHandler(this.grabToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.infoToolStripMenuItem.Text = "&Info";
             this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(214, 6);
+            // 
+            // tsmiAllowBoxCorrection
+            // 
+            this.tsmiAllowBoxCorrection.Name = "tsmiAllowBoxCorrection";
+            this.tsmiAllowBoxCorrection.Size = new System.Drawing.Size(217, 22);
+            this.tsmiAllowBoxCorrection.Text = "Allow Box Corrections";
+            this.tsmiAllowBoxCorrection.Click += new System.EventHandler(this.tsmiAllowBoxCorrection_Click);
             // 
             // tscbQualty
             // 
@@ -141,12 +150,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(214, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -158,12 +167,13 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             // 
-            // tsmiAllowBoxCorrection
+            // tsmiCapturePrintscreen
             // 
-            this.tsmiAllowBoxCorrection.Name = "tsmiAllowBoxCorrection";
-            this.tsmiAllowBoxCorrection.Size = new System.Drawing.Size(190, 22);
-            this.tsmiAllowBoxCorrection.Text = "Allow Box Corrections";
-            this.tsmiAllowBoxCorrection.Click += new System.EventHandler(this.tsmiAllowBoxCorrection_Click);
+            this.tsmiCapturePrintscreen.Name = "tsmiCapturePrintscreen";
+            this.tsmiCapturePrintscreen.Size = new System.Drawing.Size(217, 22);
+            this.tsmiCapturePrintscreen.Text = "Capture Printscreen Button";
+            this.tsmiCapturePrintscreen.ToolTipText = "If Enabled, grabbing cann be activated by pressing the Printscreen button";
+            this.tsmiCapturePrintscreen.Click += new System.EventHandler(this.tsmiCapturePrintscreen_Click);
             // 
             // Main
             // 
@@ -201,6 +211,7 @@
         private System.Windows.Forms.ToolStripComboBox tscbQualty;
         private System.Windows.Forms.ToolStripComboBox tscbType;
         private System.Windows.Forms.ToolStripMenuItem tsmiAllowBoxCorrection;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCapturePrintscreen;
     }
 }
 

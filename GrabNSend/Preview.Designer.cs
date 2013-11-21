@@ -35,15 +35,15 @@
             this.lFileName = new System.Windows.Forms.Label();
             this.bCancel = new System.Windows.Forms.Button();
             this.tbFileName = new System.Windows.Forms.TextBox();
-            this.bUpload = new System.Windows.Forms.Button();
             this.pTop = new System.Windows.Forms.Panel();
             this.pbPreview = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbPencil = new System.Windows.Forms.ToolStripButton();
             this.tsbRubber = new System.Windows.Forms.ToolStripButton();
             this.tsbChooseColor = new System.Windows.Forms.ToolStripButton();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.tsbScaleToHundred = new System.Windows.Forms.ToolStripButton();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.bSendMail = new System.Windows.Forms.Button();
             this.pBottom.SuspendLayout();
             this.pTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
@@ -52,12 +52,12 @@
             // 
             // pBottom
             // 
+            this.pBottom.Controls.Add(this.bSendMail);
             this.pBottom.Controls.Add(this.cbOpenTempFolder);
             this.pBottom.Controls.Add(this.cbDeleteFileAfterClosing);
             this.pBottom.Controls.Add(this.lFileName);
             this.pBottom.Controls.Add(this.bCancel);
             this.pBottom.Controls.Add(this.tbFileName);
-            this.pBottom.Controls.Add(this.bUpload);
             this.pBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pBottom.Location = new System.Drawing.Point(0, 298);
             this.pBottom.Name = "pBottom";
@@ -103,9 +103,9 @@
             this.bCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCancel.Location = new System.Drawing.Point(331, 8);
+            this.bCancel.Location = new System.Drawing.Point(331, 42);
             this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(84, 72);
+            this.bCancel.Size = new System.Drawing.Size(84, 38);
             this.bCancel.TabIndex = 2;
             this.bCancel.Text = "Done";
             this.bCancel.UseVisualStyleBackColor = true;
@@ -122,19 +122,6 @@
             this.tbFileName.TabIndex = 1;
             this.tbFileName.Enter += new System.EventHandler(this.tbFileName_Enter);
             this.tbFileName.Leave += new System.EventHandler(this.tbFileName_Leave);
-            // 
-            // bUpload
-            // 
-            this.bUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bUpload.Location = new System.Drawing.Point(331, 8);
-            this.bUpload.Name = "bUpload";
-            this.bUpload.Size = new System.Drawing.Size(84, 29);
-            this.bUpload.TabIndex = 6;
-            this.bUpload.Text = "Upload";
-            this.bUpload.UseVisualStyleBackColor = true;
-            this.bUpload.Visible = false;
-            this.bUpload.Click += new System.EventHandler(this.bUpload_Click);
             // 
             // pTop
             // 
@@ -223,6 +210,18 @@
             this.tsbScaleToHundred.Text = "Scale to 100%";
             this.tsbScaleToHundred.Click += new System.EventHandler(this.tsbScaleToHundred_Click);
             // 
+            // bSendMail
+            // 
+            this.bSendMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSendMail.Location = new System.Drawing.Point(331, 10);
+            this.bSendMail.Name = "bSendMail";
+            this.bSendMail.Size = new System.Drawing.Size(84, 26);
+            this.bSendMail.TabIndex = 6;
+            this.bSendMail.Text = "Email";
+            this.bSendMail.UseVisualStyleBackColor = true;
+            this.bSendMail.Click += new System.EventHandler(this.bSendMail_Click);
+            // 
             // Preview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,7 +265,7 @@
         private System.Windows.Forms.ToolStripButton tsbRubber;
         private System.Windows.Forms.ToolStripButton tsbChooseColor;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Button bUpload;
         private System.Windows.Forms.ToolStripButton tsbScaleToHundred;
+        private System.Windows.Forms.Button bSendMail;
     }
 }

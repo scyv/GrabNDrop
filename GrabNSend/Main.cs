@@ -7,18 +7,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Diagnostics;
 
 namespace GrabNDrop
 {
 
     public partial class Main : Form
     {
-        //[DllImport("user32.dll")]
-        //public static extern bool RegisterHotKey(IntPtr hWnd,
-        //  int id, int fsModifiers, int vlc);
-        //[DllImport("user32.dll")]
-        //public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
         [DllImport("shell32.dll", CharSet = CharSet.Auto)]
         static extern int SHFileOperation(ref SHFILEOPSTRUCT FileOp);
 
@@ -37,6 +32,8 @@ namespace GrabNDrop
             public string lpszProgressTitle;
         }
 
+
+
         private const int FO_DELETE = 3;
         private const int FOF_ALLOWUNDO = 0x40;
         private const int FOF_NOCONFIRMATION = 0x0010;
@@ -44,24 +41,24 @@ namespace GrabNDrop
         private Dictionary<string, string> settings;
 
         private bool resizeHookEnabled = false;
+        private bool grabbing = false;
 
         private long quality = 100L;
         private string type = "png";
         private bool afterGrabCorrection = true;
+        private bool hookPrintScreen = true;
         private string filePrefix = "Grabbed_";
 
         private String settingsFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "GrabNDrop/settings.properties");
 
         public Main()
         {
-            InitializeComponent();
+            _hookID = SetHook(_proc, this);
 
-            //RegisterHotKey(this.Handle, this.GetType().GetHashCode(), 0, (int)Keys.PrintScreen);
+            InitializeComponent();
 
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.Hide();
-
-           
 
             settings = new Dictionary<string, string>();
             if (System.IO.File.Exists(settingsFile))
@@ -94,7 +91,9 @@ namespace GrabNDrop
             type = getSetting("type", "PNG").ToUpper();
             afterGrabCorrection = bool.Parse(getSetting("afterGrabCorrection", "true"));
             filePrefix = getSetting("filePrefix", "Grabbed_");
+            hookPrintScreen = bool.Parse(getSetting("hookPrintScreen", "true"));
 
+            tsmiCapturePrintscreen.Checked = hookPrintScreen;
             tsmiAllowBoxCorrection.Checked = afterGrabCorrection;
 
             if (type.Equals("JPG"))
@@ -155,15 +154,6 @@ namespace GrabNDrop
             return value;
         }
 
-        //protected override void WndProc(ref Message m)
-        //{
-        //    if (m.Msg == 0x0312)
-        //    {
-        //        Grab();
-        //    }
-        //    base.WndProc(ref m);
-        //}
-
         private void bGrab_Click(object sender, EventArgs e)
         {
             Grab();
@@ -171,20 +161,29 @@ namespace GrabNDrop
 
         private void bExit_Click(object sender, EventArgs e)
         {
+            UnhookWindowsHookEx(_hookID);
             this.Dispose();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UnhookWindowsHookEx(_hookID);
             this.Dispose();
         }
 
         private void Grab()
         {
+            if (grabbing) {
+                return;
+            }
+            grabbing = true;
+
             GrabView gv = new GrabView();
             gv.Settings = settings;
+           
             if (gv.ShowDialog() == DialogResult.OK)
             {
+                grabbing = false;
                 Preview preview = new Preview();
                 preview.Settings = settings;
                 preview.SetPicture(gv.GetGrabbedImage());
@@ -219,6 +218,7 @@ namespace GrabNDrop
                 preview.Clean();
                 gv.GetGrabbedImage().Dispose();
             }
+            grabbing = false;
         }
 
         private void grabToolStripMenuItem_Click(object sender, EventArgs e)
@@ -260,7 +260,7 @@ namespace GrabNDrop
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("GrabNDrop Version " + Application.ProductVersion + "\n" +
-                "(c)2012 Yves Schubert\nAll Rights Reserved.\n" +
+                "(c)2013 Yves Schubert\nAll Rights Reserved.\n" +
                 "More information and current version at: http://www.scyv.de\n\nThe Program icons are under Copyright from Mark James (http://www.famfamfam.com/lab/icons/silk/)", "GrabNDrop", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -301,6 +301,73 @@ namespace GrabNDrop
             tsmiAllowBoxCorrection.Checked = afterGrabCorrection;
             saveSetting("afterGrabCorrection", afterGrabCorrection.ToString().ToLower());
         }
+
+
+        private void tsmiCapturePrintscreen_Click(object sender, EventArgs e)
+        {
+            hookPrintScreen = !hookPrintScreen;
+            tsmiCapturePrintscreen.Checked = hookPrintScreen;
+            saveSetting("hookPrintScreen", hookPrintScreen.ToString().ToLower());
+        }
+
+        #region PrintScreenHook
+
+        private const int WH_KEYBOARD_LL = 13;
+        private const int WM_KEYDOWN = 0x0100;
+        private const int VK_F1 = 0x70;
+        private static LowLevelKeyboardProc _proc = HookCallback;
+        private static IntPtr _hookID = IntPtr.Zero;
+        private static Main _main;
+        private static IntPtr SetHook(LowLevelKeyboardProc proc, Main main)
+        {
+            _main = main;
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
+            {
+                return SetWindowsHookEx(WH_KEYBOARD_LL, proc,
+                    GetModuleHandle(curModule.ModuleName), 0);
+            }
+        }
+
+        private delegate IntPtr LowLevelKeyboardProc(
+            int nCode, IntPtr wParam, IntPtr lParam);
+
+        private static IntPtr HookCallback(
+            int nCode, IntPtr wParam, IntPtr lParam)
+        {
+
+            if (nCode >= 0)
+            {
+                Keys number = (Keys)Marshal.ReadInt32(lParam);
+                if (number == Keys.PrintScreen)
+                {
+                    if (_main.hookPrintScreen)
+                    {
+                        _main.Grab();
+                    }
+                }
+
+            }
+            return CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
+
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr SetWindowsHookEx(int idHook,
+            LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode,
+            IntPtr wParam, IntPtr lParam);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
+
+        #endregion
 
     }
 }

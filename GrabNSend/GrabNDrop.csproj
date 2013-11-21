@@ -99,6 +99,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MailMapiMessage.cs" />
     <Compile Include="PictureDescriptionDialog.cs">
       <SubType>Form</SubType>
     </Compile>

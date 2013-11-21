@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace GrabNDrop
 {
@@ -16,5 +18,7 @@ namespace GrabNDrop
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
         }
+
+
     }
 }
