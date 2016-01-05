@@ -260,7 +260,7 @@ namespace GrabNDrop
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("GrabNDrop Version " + Application.ProductVersion + "\n" +
-                "(c)2013 Yves Schubert\nAll Rights Reserved.\n" +
+                "(c)2015 Yves Schubert\nAll Rights Reserved.\n" +
                 "More information and current version at: http://www.scyv.de\n\nThe Program icons are under Copyright from Mark James (http://www.famfamfam.com/lab/icons/silk/)", "GrabNDrop", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
